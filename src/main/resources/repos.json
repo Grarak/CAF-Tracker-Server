@@ -1,0 +1,44 @@
+[
+  {
+    "name": "platform_build",
+    "link": "https://source.codeaurora.org/quic/la/platform/build",
+    "tag_link": "https://source.codeaurora.org/quic/la/platform/build/tag/?h=%s",
+    "content_name": "Android Version",
+    "content_parser": "android_version.sh"
+  },
+  {
+    "name": "kernel_msm",
+    "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm",
+    "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm/tag/?h=%s",
+    "content_name": "Kernel Version",
+    "content_parser": "kernel_version.sh"
+  },
+  {
+    "name": "kernel_msm-3.10",
+    "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm-3.10",
+    "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm-3.10/tag/?h=%s",
+    "content_name": "Kernel Version",
+    "content_parser": "kernel_version.sh"
+  },
+  {
+    "name": "kernel_msm-3.14",
+    "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm-3.14",
+    "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm-3.14/tag/?h=%s",
+    "content_name": "Kernel Version",
+    "content_parser": "kernel_version.sh"
+  },
+  {
+    "name": "kernel_msm-3.18",
+    "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm-3.18",
+    "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm-3.18/tag/?h=%s",
+    "content_name": "Kernel Version",
+    "content_parser": "kernel_version.sh"
+  },
+  {
+    "name": "kernel_msm-4.4",
+    "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm-4.4",
+    "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm-4.4/tag/?h=%s",
+    "content_name": "Kernel Version",
+    "content_parser": "kernel_version.sh"
+  }
+]
