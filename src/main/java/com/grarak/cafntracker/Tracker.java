@@ -49,7 +49,7 @@ public class Tracker {
             String content = Utils.readFile(idsFile);
             JsonArray array = new JsonParser().parse(content).getAsJsonArray();
             for (int i = 0; i < array.size(); i++) {
-                mIds.add(array.get(i).getAsString());
+                mIds.add(array.get(i).getAsString().trim());
             }
         }
 
@@ -93,7 +93,8 @@ public class Tracker {
                         String tags = Utils.executeProcess("git -C " + file.getAbsolutePath() + " tag");
 
                         List<String> curTags = Arrays.asList(tags.split("\\r?\\n"));
-                        List<String> newTags = curTags.stream().filter(tag -> !repo.tags.contains(tag)).collect(Collectors.toList());
+                        List<String> newTags = curTags.stream().filter(tag ->
+                                !repo.tags.contains(tag) && !tag.startsWith("android-")).collect(Collectors.toList());
 
                         for (String newTag : newTags) {
                             File parserScript = new File("parse_script.sh");
@@ -136,9 +137,10 @@ public class Tracker {
                 Log.i(TAG, "Connected to " + address);
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
 
-                byte[] buffer = new byte[256];
+                byte[] buffer = new byte[8192];
                 dataInputStream.read(buffer);
-                String id = new String(buffer);
+                String id = new String(buffer).trim();
+                Log.i(TAG, id);
 
                 JsonArray repoList = new JsonArray();
                 for (Repo repo : repos) {
