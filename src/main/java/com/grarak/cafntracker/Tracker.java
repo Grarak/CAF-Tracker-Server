@@ -87,7 +87,7 @@ public class Tracker {
                     }
                     try {
                         Log.i(TAG, "Sleeping");
-                        Thread.sleep(30000);
+                        Thread.sleep(10000);
 
                         Utils.executeProcess("git -C " + file.getAbsolutePath() + " fetch origin");
                         String tags = Utils.executeProcess("git -C " + file.getAbsolutePath() + " tag");

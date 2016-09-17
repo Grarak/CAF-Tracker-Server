@@ -7,6 +7,13 @@
     "content_parser": "android_version.sh"
   },
   {
+    "name": "device_qcom_common",
+    "link": "https://source.codeaurora.org/quic/la/device/qcom/common",
+    "tag_link": "https://source.codeaurora.org/quic/la/device/qcom/common/tag/?h=%s",
+    "content_name": "",
+    "content_parser": "generic.sh"
+  },
+  {
     "name": "kernel_msm",
     "link": "https://portland.source.codeaurora.org/quic/la/kernel/msm",
     "tag_link": "https://source.codeaurora.org/quic/la/kernel/msm/tag/?h=%s",
