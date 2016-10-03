@@ -40,7 +40,6 @@ public class Tracker {
     private static final String TAG = Tracker.class.getSimpleName();
 
     private final ArrayList<String> mIds = new ArrayList<>();
-    private boolean mRunning = true;
 
     private Tracker(int port, String api, ArrayList<Repo> repos) throws IOException {
 
@@ -87,7 +86,7 @@ public class Tracker {
                     }
                     try {
                         Log.i(TAG, "Sleeping");
-                        Thread.sleep(30000);
+                        Thread.sleep(10000);
 
                         Utils.executeProcess("git -C " + file.getAbsolutePath() + " fetch origin");
                         String tags = Utils.executeProcess("git -C " + file.getAbsolutePath() + " tag");
@@ -119,10 +118,7 @@ public class Tracker {
                         Log.i(TAG, "Failed to update tags for " + repo.name);
                     }
                 }
-
-                if (mRunning) {
-                    run();
-                }
+                run();
             }
         }).start();
 
@@ -130,7 +126,7 @@ public class Tracker {
         SSLServerSocketFactory ssf = loadKeyStore().getServerSocketFactory();
         SSLServerSocket s = (SSLServerSocket) ssf.createServerSocket(port);
 
-        while (mRunning) {
+        while (true) {
             try {
                 SSLSocket socket = (SSLSocket) s.accept();
                 String address = socket.getRemoteSocketAddress().toString();
@@ -165,9 +161,6 @@ public class Tracker {
                 Log.e(TAG, "Failed to connect to client");
             }
         }
-        s.close();
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> mRunning = false));
     }
 
     private SSLContext loadKeyStore() throws IOException {
