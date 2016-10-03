@@ -71,6 +71,12 @@ public class Utils {
 
         bufferedReader.close();
         process.waitFor();
+
+        process.getInputStream().close();
+        process.getOutputStream().close();
+        process.getErrorStream().close();
+
+        process.destroy();
         return stringBuilder.toString();
     }
 
