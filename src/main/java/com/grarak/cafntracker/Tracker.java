@@ -62,9 +62,8 @@ public class Tracker {
             }
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        new Thread(() -> {
+            while (true) {
                 for (Repo repo : repos) {
                     File file = new File("repos/" + repo.name);
                     if (!file.exists()) {
@@ -118,7 +117,6 @@ public class Tracker {
                         Log.i(TAG, "Failed to update tags for " + repo.name);
                     }
                 }
-                run();
             }
         }).start();
 
